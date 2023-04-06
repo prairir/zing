@@ -52,7 +52,10 @@ fn try_xdp_firewall(ctx: XdpContext) -> Result<u32, ()> {
     }
 
     let icmphdr: *const IcmpHdr = ptr_at(&ctx, EthHdr::LEN + Ipv4Hdr::LEN)?;
-    let icmp_type = u8::from_be(unsafe { (*icmphdr).type_ });
+    let icmp_type = match u8::from_be(unsafe { (*icmphdr).type_ }) {
+        08 => 08,
+        _ => return Ok(xdp_action::XDP_PASS),
+    };
 
     info!(
         &ctx,
