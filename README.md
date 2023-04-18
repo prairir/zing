@@ -1,5 +1,16 @@
 # zing
 
+**z**oom p**ing**
+
+## What is
+
+a fast eBPF DPA rust ping echo server
+
+## Why?
+
+what you've never wanted a wire speed ping echo server?
+naw I really did it to learn more rust and eBPF.
+
 ## Prerequisites
 
 1. Install a rust stable toolchain: `rustup install stable`
