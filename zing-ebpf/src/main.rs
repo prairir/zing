@@ -89,7 +89,7 @@ fn try_xdp_firewall(ctx: XdpContext) -> Result<u32, ()> {
     unsafe {
         let mut check = !(*icmphdr).checksum;
 
-        check -= 8;
+        check -= ICMP_PING_TYPE;
 
         (*icmphdr).checksum = !(check as u16);
     }
